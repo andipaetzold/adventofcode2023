@@ -1,5 +1,5 @@
 import { readFileSync } from "node:fs";
-import { getPositionsCount, getPositionsCountAfterSteps } from "./util.mjs";
+import { getPositionsCountAfterSteps } from "./util.mjs";
 import assert from "node:assert";
 
 const input = readFileSync("input1.txt", "utf-8");
