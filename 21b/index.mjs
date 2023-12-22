@@ -15,22 +15,22 @@ assert.equal(width, height);
 // there are diagonal lines between the centers of each side
 // it takes 131 steps (width/height) to fill the map from the center
 
-const { even: totalEven, odd: totalOdd } = getPositionsCount(map);
-const coreOdd = getPositionsCountAfterSteps(map, 65);
-const coreEven = getPositionsCountAfterSteps(map, 64);
+const halfSize = Math.floor(width / 2);
+
+const coreOdd = getPositionsCountAfterSteps(map, halfSize);
+const coreEven = getPositionsCountAfterSteps(map, halfSize - 1);
 const outerOdd =
-  getPositionsCountAfterSteps(map, 63, [0, 0]) +
-  getPositionsCountAfterSteps(map, 63, [0, height - 1]) +
-  getPositionsCountAfterSteps(map, 63, [width - 1, 0]) +
-  getPositionsCountAfterSteps(map, 63, [width - 1, height - 1]);
+  getPositionsCountAfterSteps(map, halfSize - 2, [0, 0]) +
+  getPositionsCountAfterSteps(map, halfSize - 2, [0, height - 1]) +
+  getPositionsCountAfterSteps(map, halfSize - 2, [width - 1, 0]) +
+  getPositionsCountAfterSteps(map, halfSize - 2, [width - 1, height - 1]);
 const outerEven =
-  getPositionsCountAfterSteps(map, 64, [0, 0]) +
-  getPositionsCountAfterSteps(map, 64, [0, height - 1]) +
-  getPositionsCountAfterSteps(map, 64, [width - 1, 0]) +
-  getPositionsCountAfterSteps(map, 64, [width - 1, height - 1]);
+  getPositionsCountAfterSteps(map, halfSize - 1, [0, 0]) +
+  getPositionsCountAfterSteps(map, halfSize - 1, [0, height - 1]) +
+  getPositionsCountAfterSteps(map, halfSize - 1, [width - 1, 0]) +
+  getPositionsCountAfterSteps(map, halfSize - 1, [width - 1, height - 1]);
 
 const steps = 26_501_365;
-const halfSize = Math.floor(width / 2);
 
 const factor = (steps - halfSize) / (2 * width);
 const coreOddCount = (1 + factor * 2) ** 2;
